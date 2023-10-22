@@ -1,63 +1,83 @@
-// Отримайте дані про записи (замініть цей об'єкт на реальні дані)
+// Отримаємо дані про записи (замініть цей об'єкт на реальні дані)
 let postsData = [
   {
-      "title": "Заголовок запису",
-      "description": "Короткий опис запису 1",
-      "icon": "./pen2.png",
-      "button": "Виконати"
-  },
-  {
-      "title": "Заголовок запису",
-      "description": "Короткий опис запису 1",
-      "icon": "./pen2.png",
-      "button": "Виконати"
-  },
-  {
+      "id": "1",
       "title": "Заголовок запису 1",
       "description": "Короткий опис запису 1",
       "icon": "./pen2.png",
-      "button": "Виконати"
+      "link": "Виконати"
   },
   {
-      "title": "Заголовок запису",
-      "description": "Короткий опис запису 1",
+      "id": "2",
+      "title": "Заголовок запису 2",
+      "description": "Короткий опис запису 2",
       "icon": "./pen2.png",
-      "button": "Виконати"
+      "link": "Виконати"
   },
   {
-      "title": "Заголовок запису",
-      "description": "Короткий опис запису 1",
+      "id": "3",
+      "title": "Заголовок запису 3",
+      "description": "Короткий опис запису 3",
       "icon": "./pen2.png",
-      "button": "Виконати"
+      "link": "Виконати"
   },
   {
-      "title": "Заголовок запису",
-      "description": "Короткий опис запису 1",
+      "id": "4",
+      "title": "Заголовок запису 4",
+      "description": "Короткий опис запису 4",
       "icon": "./pen2.png",
-      "button": "Виконати"
+      "link": "Виконати"
   },
   {
-      "title": "Заголовок запису",
-      "description": "Короткий опис запису 1",
+      "id": "5",
+      "title": "Заголовок запису 5",
+      "description": "Короткий опис запису 5",
       "icon": "./pen2.png",
-      "button": "Виконати"
+      "link": "Виконати"
   },
   {
-      "title": "Заголовок запису",
-      "description": "Короткий опис запису 1",
+      "id": "6",
+      "title": "Заголовок запису 6",
+      "description": "Короткий опис запису 6",
       "icon": "./pen2.png",
-      "button": "Виконати"
+      "link": "Виконати"
   },
-
+  {
+      "id": "7",
+      "title": "Заголовок запису 7",
+      "description": "Короткий опис запису 7",
+      "icon": "./pen2.png",
+      "link": "Виконати"
+  },
+  {
+      "id": "8",
+      "title": "Заголовок запису 8",
+      "description": "Короткий опис запису 8",
+      "icon": "./pen2.png",
+      "link": "Виконати"
+  },
+  {
+      "id": "9",
+      "title": "Заголовок запису 9",
+      "description": "Короткий опис запису 9",
+      "icon": "./pen2.png",
+      "link": "Виконати"
+  },
+  {
+      "id": "10",
+      "title": "Заголовок запису 10",
+      "description": "Короткий опис запису 10",
+      "icon": "./pen2.png",
+      "link": "Виконати"
+  },
+  
  
 ]
 
 
 document.addEventListener("DOMContentLoaded", function () {
   // Отримуємо контейнер для карток записів
- let postCardsContainer = document.getElementById("post-cards-container");
-
-  
+  let postCardsContainer = document.getElementById("post-cards-container");
 
   // Додаємо кожну картку запису до контейнера
   postsData.forEach(function (post) {
@@ -77,14 +97,29 @@ document.addEventListener("DOMContentLoaded", function () {
       postDescription.classList.add("post-description")
 
       let postButton = document.createElement("a");
-      postButton.textContent = post.button; // Кнопка "Виконати"
-      postButton.classList.add("post-button")
+      postButton.textContent = post.link; // Кнопка "Виконати"
+      postButton.addEventListener("click", () => {
+        showDetails(post);
+       
+      }),
 
-      postCard.appendChild(postIcon);
-      postCard.appendChild(postTitle);
-      postCard.appendChild(postDescription);
-      postCard.appendChild(postButton);
+       postButton.classList.add("post-link");
 
-      postCardsContainer.appendChild(postCard);
+      postCard.append(postIcon);
+      postCard.append(postTitle);
+      postCard.append(postDescription);
+      postCard.append(postButton);
+
+      postCardsContainer.append(postCard);
   });
 });
+
+
+  // Функція для відображення детальної інформації картки
+function showDetails(post) {
+
+  const newPage = window.open("", "_blank");
+  newPage.document.write(`<h1>${post.title}</h1>`);
+  newPage.document.write(`<p>${post.description}</p>`);
+  
+}
